@@ -1,0 +1,6 @@
+test/*/*.test.js
+--require test/mocha_config
+--require test/server_config
+--recursive
+-t 8000
+--compilers js:babel-core/register

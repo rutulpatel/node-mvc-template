@@ -1,13 +1,25 @@
-import db from '../models';
+import {Instructor} from '../models';
 
-exports.addInstructor = (instructorObj) => {
-    new Promise((resolve, reject) => {
-        db.Instructor.create(instructorObj)
-            .then((res) => {
-                resolve(res);
-            })
-            .catch(err => {
-                reject(err);
-            })
-    });
+exports.getById = (id) => {
+    return Instructor.findById(id);
 };
+
+exports.getAll = (searchParams, includeArr) => {
+    return Instructor.findAll({where: searchParams, include: includeArr});
+};
+
+exports.search = (instructoObj) => {
+    return Instructor.findAll({where: instructoObj});
+};
+
+exports.add = (instructorObj) => {
+    return Instructor.create(instructorObj);
+};
+
+exports.delete = (id) => {
+    return Instructor.destroy({where: {id: id}});
+};
+
+
+
+
